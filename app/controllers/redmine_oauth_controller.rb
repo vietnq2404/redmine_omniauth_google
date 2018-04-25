@@ -14,7 +14,7 @@ class RedmineOauthController < AccountController
   end
 
   def oauth_google_callback
-    if params[:error]
+    if params['error']
       flash[:error] = l(:notice_access_denied)
       redirect_to signin_path
     else
