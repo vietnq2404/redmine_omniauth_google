@@ -18,7 +18,7 @@ class RedmineOauthController < AccountController
       flash[:error] = l(:notice_access_denied)
       redirect_to signin_path
     else
-      token = oauth_client.auth_code.get_token(params[:code], :redirect_uri => oauth_google_callback_url)
+      token = oauth_client.auth_code.get_token(params['code'], :redirect_uri => oauth_google_callback_url)
       result = token.get('https://www.googleapis.com/oauth2/v1/userinfo')
       info = JSON.parse(result.body)
       if info && info["verified_email"]
